@@ -1,0 +1,21 @@
+section{
+  margin: 5px;
+}
+section .btn, .fn{
+  display: inline-block;
+}
+.btn, .fn{
+  padding:8px;
+  width:30px;
+  background: #DBDBDB;
+  text-align: center;
+}
+.btn:hover, .fn:hover{
+  cursor: pointer;
+}
+#resultado{
+  height: 35px;
+  text-align: right;
+  width: 200px;
+  font-size: 1.2em;
+}
