@@ -16,7 +16,7 @@ section .btn, .fn{
 #resultado{
   height: 35px;
   text-align: right;
-  width: 440px;
+  width: 295px;
   font-size: 1.2em;
 }
 .leyenda li{
