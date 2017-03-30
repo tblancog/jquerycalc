@@ -6,7 +6,7 @@ section .btn, .fn{
 }
 .btn, .fn{
   padding:8px;
-  width:30px;
+  width:55px;
   background: #DBDBDB;
   text-align: center;
 }
@@ -16,6 +16,28 @@ section .btn, .fn{
 #resultado{
   height: 35px;
   text-align: right;
-  width: 200px;
+  width: 440px;
   font-size: 1.2em;
+}
+.leyenda li{
+  list-style-type: square;
+}
+.oneoperand .fn{
+  background: #93E6CD;
+}
+.bioperand{
+  background: #ADDDED;
+}
+.noperands{
+  background: #E6E393;
+}
+
+.leyenda li.unitarias{
+  color: #93E6CD;
+}
+.leyenda li.binarias{
+  color: #ADDDED;
+}
+.leyenda li.noperandos{
+  color: #E6E393;
 }

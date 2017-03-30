@@ -13,32 +13,45 @@ $(".btn").click(function(){
 
     actual = $("#resultado").val();
 
+    // Borrar
     if(vlr=="C"){
+
       $("#resultado").val("");
 
-    }else{
-        if(vlr=="="){
+    } else if( vlr=="=" ) {
 
-            // Revisar si tiene operador de exponencial
-            if( actual.indexOf('^') > 0  ){
+        // Revisar si tiene operador de exponencial
+        if( actual.indexOf('^') > 0 ) {
 
-              operands =   $("#resultado").val().split('^');
-              $("#resultado").val( Math.pow(operands[0], operands[1]) );
-            }  else {
+          operands =   $("#resultado").val().split('^');
+          $("#resultado").val( Math.pow(operands[0], operands[1]) );
 
-              $("#resultado").val(eval(actual));
-            }
-        }else{
-            $("#resultado").val(actual + vlr);
+        } else {
+
+          // Evalúa la operación con eval
+          $("#resultado").val(eval(actual));
         }
+    } else if( this.id == 'sumacsv' || this.id == 'prodcsv' ) {
+
+      actual = $("#resultado").val().split(',');
+      console.log( recorrerYOperar(actual, this.id));
+
+      $("#resultado").val( recorrerYOperar(actual, this.id) );
+    }
+
+    else {
+
+      $("#resultado").val(actual + vlr);
     }
 });
 
 // Operaciones unitarias
 $(".fn").click(function(){
+
   fn = this.id;
   resultado = $("#resultado");
   actual = resultado.val() * 1;
+
   switch (fn) {
 
     case 'pow': resultado.val( Math.pow(actual, 2) ); break;
@@ -63,6 +76,7 @@ $(".fn").click(function(){
   }
 });
 
+
 // Factorial de un número usando recursividad
 function factorial(num){
 
@@ -77,16 +91,22 @@ function factorial(num){
   }
 }
 
-// Suma de elementos de un array
-function suma(array){
+// Operaciones con n operandos (suma y multiplicación)
+function recorrerYOperar(array, tipo){
   if(array && array.length > 0){
     acum = 0;
+    producto = 1;
     $.each( array, function(indice, valor){
-      acum+= valor;
+
+      if (tipo == 'sumacsv') {
+        acum += (valor * 1);
+
+      } else {
+        producto *= (valor * 1);
+        acum = producto;
+      }
     } );
     return acum;
 
-  } else {
-    return ;
   }
 }
